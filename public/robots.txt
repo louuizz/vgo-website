@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vgo.lsedev.com/sitemap.xml
