@@ -125,8 +125,8 @@ export const content = {
     },
     areas: {
       kicker: 'Coverage',
-      h2: 'Pick-up and drop-off across Johor and Singapore.',
-      johor: { h3: 'Johor, Malaysia', list: ['Johor Bahru city centre', 'Iskandar Puteri / Nusajaya', 'Forest City', 'Senai & Kulai', 'Legoland Malaysia', 'Desaru Coast', 'Pontian', 'Mersing / Tioman ferry'] },
+      h2: 'Pick-up and drop-off across West Malaysia and Singapore.',
+      johor: { h3: 'West Malaysia', list: ['Johor Bahru and Iskandar Puteri', 'Senai, Kulai and Forest City', 'Legoland Malaysia and Desaru', 'Mersing and Tioman ferry', 'Melaka', 'Kuala Lumpur and Klang Valley', 'Ipoh and Penang', 'Any destination in West Malaysia'] },
       sg: { h3: 'Singapore', list: ['Changi Airport', 'Marina Bay & CBD', 'Orchard Road', 'Sentosa', 'Woodlands & Yishun', 'Jurong & Tuas', 'Tampines & Bedok', 'Any address island-wide'] },
     },
     book: {
@@ -163,7 +163,7 @@ export const content = {
       rights: 'All rights reserved.',
       licence: 'Licence details available on request.',
     },
-    schema: { areas: ['Johor Bahru', 'Johor', 'Singapore'], company: 'V-GO Premium Transport', serviceName: 'Premium MPV Charter & Private Transfer', serviceType: 'Chauffeur-driven private transfer and charter', desc: 'Chauffeured Toyota Alphard and Vellfire MPV for Johor Bahru and Singapore private transfers, day charters and airport pickups.' },
+    schema: { areas: ['Johor Bahru', 'West Malaysia', 'Singapore'], company: 'V-GO Premium Transport', serviceName: 'Premium MPV Charter & Private Transfer', serviceType: 'Chauffeur-driven private transfer and charter', desc: 'Chauffeured Toyota Alphard and Vellfire MPV for Johor Bahru and Singapore private transfers, day charters and airport pickups.' },
   },
 
   zh: {
@@ -265,8 +265,8 @@ export const content = {
     },
     areas: {
       kicker: '服务范围',
-      h2: '覆盖柔佛与新加坡各地接送。',
-      johor: { h3: '马来西亚柔佛', list: ['新山市中心', '依斯干达公主城 / 努沙再也', '森林城市', '士乃 & 古来', '马来西亚乐高乐园', '迪沙鲁海岸', '笨珍', '丰盛港 / 刁曼岛码头'] },
+      h2: '覆盖西马与新加坡各地接送。',
+      johor: { h3: '西马', list: ['新山与依斯干达公主城', '士乃、古来与森林城市', '乐高乐园与迪沙鲁', '丰盛港与刁曼岛码头', '马六甲', '吉隆坡与巴生谷', '怡保与槟城', '西马任意目的地'] },
       sg: { h3: '新加坡', list: ['樟宜机场', '滨海湾与中央商业区', '乌节路', '圣淘沙', '兀兰 & 义顺', '裕廊 & 大士', '淡滨尼 & 勿洛', '全岛任意地址'] },
     },
     book: {
@@ -303,6 +303,6 @@ export const content = {
       rights: '版权所有。',
       licence: '牌照资料可应要求提供。',
     },
-    schema: { areas: ['新山', '柔佛', '新加坡'], company: 'V-GO 高端交通服务', serviceName: '高端商务车包车与私人接送', serviceType: '专业司机私人接送与包车', desc: '新山与新加坡之间丰田阿尔法 / 威尔法高端商务车私人接送、一日包车与机场接送服务。' },
+    schema: { areas: ['新山', '西马', '新加坡'], company: 'V-GO 高端交通服务', serviceName: '高端商务车包车与私人接送', serviceType: '专业司机私人接送与包车', desc: '新山与新加坡之间丰田阿尔法 / 威尔法高端商务车私人接送、一日包车与机场接送服务。' },
   },
 };

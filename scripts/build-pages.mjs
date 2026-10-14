@@ -80,7 +80,7 @@ function business(lang) {
     logo: abs('/logo.png'),
     description: c.schema.desc,
     telephone: site.phoneDisplay,
-    email: site.email,
+    ...(site.email ? { email: site.email } : {}),
     priceRange: '$$$',
     slogan: c.hero.eyebrow,
     knowsLanguage: ['en', 'zh', 'ms'],
@@ -157,7 +157,7 @@ function footer(lang) {
     <div><h4>${p.ui.services}</h4><ul>${slugs.services.map((s) => li(dPath(lang, s), D(lang, s).short)).join('')}</ul></div>
     <div><h4>${p.ui.routes}</h4><ul>${slugs.routes.map((s) => li(dPath(lang, s), D(lang, s).short)).join('')}</ul></div>
     <div><h4>${p.ui.company}</h4><ul>${li(L(lang, '/fleet/'), p.nav.fleet)}${li(L(lang, '/about/'), p.nav.about)}${li(L(lang, '/faq/'), p.nav.faq)}${li(L(lang, '/contact/'), p.nav.contact)}${li(L(lang, '/privacy/'), P(lang).privacy.h1)}${li(L(lang, '/terms/'), P(lang).terms.h1)}</ul></div>
-    <div><h4>${c.aria.contact}</h4><ul><li>${ic('chat')}<a href="${wa()}" rel="noopener">WhatsApp</a></li><li>${ic('mail')}<a href="mailto:${site.email}">${site.email}</a></li><li>${ic('phone')}${site.phoneDisplay}</li></ul></div>
+    <div><h4>${c.aria.contact}</h4><ul><li>${ic('chat')}<a href="${wa()}" rel="noopener">WhatsApp</a></li>${site.email ? `<li>${ic('mail')}<a href="mailto:${site.email}">${site.email}</a></li>` : ''}<li>${ic('phone')}${site.phoneDisplay}</li></ul></div>
   </div>
   <div class="wrap foot-bot"><span>© ${new Date().getFullYear()} ${c.schema.company}. ${c.footer.rights}</span><span>${c.footer.licence}</span></div>
 </footer>
@@ -437,7 +437,7 @@ ${ctaBand(lang)}`;
 function fleetPage(lang) {
   const p = P(lang), x = p.fleet, c = home(lang), path = L(lang, '/fleet/');
   const crumbs = [{ n: p.ui.home, u: L(lang, '/') }, { n: p.nav.fleet, u: path }];
-  const faq = [c.faq.items[3], p.faqPage.extra[1]];
+  const faq = [c.faq.items[3], p.faqPage.extra[2]];
   const body = `
 ${pageHead(lang, crumbs, { h1: x.h1, lead: x.lead })}
 <section class="fleet"><div class="wrap grid-fleet">
@@ -491,7 +491,7 @@ ${pageHead(lang, crumbs, { h1: x.h1, lead: x.lead, actions: false })}
 <section class="book dark contact-sec" id="book"><div class="wrap grid-book">
   <div>
     <div class="side-card side-dark flat"><h2>${p.ui.contact || c.aria.contact}</h2>
-      <dl class="facts"><div><dt>${ic('chat')}WhatsApp</dt><dd><a href="${wa()}" rel="noopener">${site.phoneDisplay}</a></dd></div><div><dt>${ic('mail')}${p.ui.email}</dt><dd><a href="mailto:${site.email}">${site.email}</a></dd></div><div><dt>${ic('clock')}${p.ui.hours}</dt><dd>${p.ui.hoursV}</dd></div></dl>
+      <dl class="facts"><div><dt>${ic('chat')}WhatsApp</dt><dd><a href="${wa()}" rel="noopener">${site.phoneDisplay}</a></dd></div>${site.email ? `<div><dt>${ic('mail')}${p.ui.email}</dt><dd><a href="mailto:${site.email}">${site.email}</a></dd></div>` : ''}<div><dt>${ic('clock')}${p.ui.hours}</dt><dd>${p.ui.hoursV}</dd></div></dl>
     </div>
     <div class="img-mask contact-img">${pic(lang, 'chauffeur', '(max-width: 900px) 92vw, 44vw')}</div>
     <h3 class="cov-h">${p.ui.coverage}</h3>

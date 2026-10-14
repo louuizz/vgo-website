@@ -4,10 +4,10 @@
 export const site = {
   name: 'V-GO',
   legalName: 'V-GO Premium Transport', // TODO: registered company name
-  url: process.env.SITE_URL || 'https://www.vgo-transport.com', // TODO: real domain
-  whatsapp: '60000000000', // TODO: international format, no "+" (e.g. 60123456789)
-  phoneDisplay: '+60 00-000 0000', // TODO
-  email: 'hello@vgo-transport.com', // TODO
+  url: process.env.SITE_URL || 'https://vgo.lsedev.com',
+  whatsapp: '601176314314', // international format, no "+"
+  phoneDisplay: '+60 11-7631 4314',
+  email: '', // TODO: add a real email; left empty it is hidden everywhere
   // TODO: add your real licence numbers — shown in the trust section + schema
   licences: {
     malaysia: '', // e.g. APAD / MOTAC licence no.

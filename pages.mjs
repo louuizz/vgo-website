@@ -89,7 +89,7 @@ export const pages = {
         lead: 'Comfortable seating, room for luggage and a driver who handles the road. Travel from Singapore or Johor Bahru to Legoland, Desaru, Mersing, Melaka and Kuala Lumpur at your own pace.',
         facts: [['Destinations', 'Legoland, Desaru, Forest City, Mersing, Melaka, Kuala Lumpur'], ['Journey time', 'About 30 minutes to 5 hours'], ['Vehicle', 'Toyota Alphard or Vellfire'], ['Capacity', 'Up to 6 passengers'], ['Pricing', 'Fixed all-in quote']],
         sections: [
-          { h2: 'Indicative drive times from Johor Bahru', list: ['Legoland Malaysia: about 30 to 60 minutes', 'Desaru Coast: about 1 to 1.5 hours', 'Mersing jetty for the Tioman ferry: about 2 to 3 hours', 'Melaka: about 2.5 to 3.5 hours', 'Kuala Lumpur: about 4 to 5 hours'] },
+          { h2: 'Indicative drive times from Johor Bahru', list: ['Legoland Malaysia: about 30 to 60 minutes', 'Desaru Coast: about 1 to 1.5 hours', 'Mersing jetty for the Tioman ferry: about 2 to 3 hours', 'Melaka: about 2.5 to 3.5 hours', 'Kuala Lumpur: about 4 to 5 hours', 'Ipoh, Penang and other West Malaysia destinations: on request'] },
           { h2: 'Why go private', p: ['A private MPV removes bus timetables and transfers. You leave when you want, stop when you need to and arrive with your group and luggage together. It suits families, friends travelling together and business travellers who want to work or rest on the way.'] },
           { h2: 'Planning a long trip', list: ['Tell us your destination, date and group size for a fixed quote', 'Rest and meal stops can be planned along the route', 'One-way and return trips are both available', 'Overnight stays by agreement'] },
         ],
@@ -196,7 +196,7 @@ export const pages = {
       h1: 'Popular routes between Singapore and Johor',
       lead: 'Typical journey times without heavy queues. Checkpoint traffic changes by the hour, so we plan your pick-up time around it.',
       moreH: 'Other destinations',
-      moreP: 'Legoland Malaysia, Desaru Coast, Forest City, Mersing, Melaka and Kuala Lumpur are all available as private trips.',
+      moreP: 'Legoland Malaysia, Desaru Coast, Forest City, Mersing, Melaka, Kuala Lumpur, Ipoh, Penang and any other destination in West Malaysia are all available as private trips.',
     },
     fleet: {
       title: 'Our Fleet: Toyota Alphard & Vellfire MPV | V-GO',
@@ -221,7 +221,7 @@ export const pages = {
       sections: [
         { h2: 'Who we are', p: ['V-GO is a premium private transport service for travellers, families, executives and tour groups moving between Johor Bahru and Singapore. We replace the taxi queue, the shared van and the surprise surcharge with a chauffeured MPV that is yours alone for the whole journey.', 'Our name says what we do: you tell us where, and we go. Our tagline says how: your journey begins here, at your door.'] },
         { h2: 'What we stand for', list: ['Fixed, all-in pricing confirmed before you travel', 'Professional, courteous chauffeurs', 'Clean, comfortable, well-maintained vehicles', 'Clear communication on WhatsApp, around the clock', 'Honest advice about timing, documents and checkpoint conditions'] },
-        { h2: 'Where we operate', p: ['We serve Johor Bahru, Iskandar Puteri, Forest City, Senai, Legoland Malaysia and Desaru in Johor, and any address in Singapore including Changi Airport. Longer trips to Mersing, Melaka and Kuala Lumpur are available on request.'] },
+        { h2: 'Where we operate', p: ['Our core corridor is Johor Bahru and Singapore: Johor Bahru, Iskandar Puteri, Forest City, Senai, Legoland Malaysia and Desaru, plus any address in Singapore including Changi Airport. We also drive private trips anywhere in West Malaysia, including Melaka, Kuala Lumpur, Ipoh and Penang, on request.'] },
         { h2: 'Licensing and safety', p: ['Cross-border passenger transport must be properly licensed and insured in both countries. Ask us for our licence details at any time, and we encourage you to ask any operator the same question before you book.'] },
       ],
       licH: 'Licence details',
@@ -233,6 +233,7 @@ export const pages = {
       h1: 'Frequently asked questions',
       lead: 'Everything travellers ask before booking a private transfer or charter between Singapore and Johor Bahru.',
       extra: [
+        { q: 'Which areas do you serve?', a: 'Our core corridor is Johor Bahru and Singapore, including Changi and Senai airports. We also arrange private trips anywhere in West Malaysia, such as Melaka, Kuala Lumpur, Ipoh and Penang. Tell us your destination and we quote it.' },
         { q: 'Do you provide child seats?', a: 'Child seats are available on request and subject to availability. Tell us the ages of the children when you book.' },
         { q: 'How many suitcases fit in the vehicle?', a: 'Our Alphard comfortably takes up to four large suitcases depending on the seating layout. Tell us your luggage count and we confirm the right vehicle.' },
       ],
@@ -354,7 +355,7 @@ export const pages = {
         lead: '舒适座椅、宽敞行李空间，路上交给司机。从新加坡或新山出发，按自己的节奏前往乐高乐园、迪沙鲁、丰盛港、马六甲与吉隆坡。',
         facts: [['目的地', '乐高乐园、迪沙鲁、森林城市、丰盛港、马六甲、吉隆坡'], ['行程时间', '约 30 分钟至 5 小时'], ['车型', '丰田阿尔法或威尔法'], ['载客量', '最多 6 位乘客'], ['价格', '一口价全包报价']],
         sections: [
-          { h2: '从新山出发的参考车程', list: ['马来西亚乐高乐园：约 30 至 60 分钟', '迪沙鲁海岸：约 1 至 1.5 小时', '丰盛港码头（刁曼岛渡轮）：约 2 至 3 小时', '马六甲：约 2.5 至 3.5 小时', '吉隆坡：约 4 至 5 小时'] },
+          { h2: '从新山出发的参考车程', list: ['马来西亚乐高乐园：约 30 至 60 分钟', '迪沙鲁海岸：约 1 至 1.5 小时', '丰盛港码头（刁曼岛渡轮）：约 2 至 3 小时', '马六甲：约 2.5 至 3.5 小时', '吉隆坡：约 4 至 5 小时', '怡保、槟城及西马其他目的地：可应要求安排'] },
           { h2: '为什么选择私人专车', p: ['私人商务车省去巴士时刻与转乘。您想几点走就几点走，想停就停，团体与行李一起抵达。适合家庭、结伴出游，以及想在路上工作或休息的商务旅客。'] },
           { h2: '规划长途行程', list: ['告诉我们目的地、日期与人数，即可获得一口价报价', '可沿途安排休息与用餐停靠', '单程与往返都可预订', '过夜行程可按约定安排'] },
         ],
@@ -461,7 +462,7 @@ export const pages = {
       h1: '新加坡与柔佛之间的热门路线',
       lead: '以下为无严重塞车时的参考时间。关卡车流随时段变化，我们会据此为您规划最佳接送时间。',
       moreH: '其他目的地',
-      moreP: '乐高乐园、迪沙鲁海岸、森林城市、丰盛港、马六甲与吉隆坡，均可预订私人行程。',
+      moreP: '乐高乐园、迪沙鲁海岸、森林城市、丰盛港、马六甲、吉隆坡、怡保、槟城以及西马其他任何目的地，均可预订私人行程。',
     },
     fleet: {
       title: '我们的车队：丰田阿尔法与威尔法 | V-GO',
@@ -486,7 +487,7 @@ export const pages = {
       sections: [
         { h2: '我们是谁', p: ['V-GO 是为往返新山与新加坡的旅客、家庭、商务人士与旅行团打造的高端私人交通服务。我们用专属的商务车专车，取代排队等车、拼车和临时加价。', '我们的名字说明做什么：您告诉我们去哪里，我们就出发。我们的口号说明怎么做：您的旅程，从您的家门口开始。'] },
         { h2: '我们的坚持', list: ['出发前确认的一口价全包价格', '专业、礼貌的司机', '干净、舒适、保养良好的车辆', '全天候 WhatsApp 清晰沟通', '对时间、证件与关卡情况给出诚实建议'] },
-        { h2: '服务范围', p: ['我们服务柔佛的新山、依斯干达公主城、森林城市、士乃、乐高乐园与迪沙鲁，以及新加坡包括樟宜机场在内的任意地址。前往丰盛港、马六甲与吉隆坡的长途行程可应要求安排。'] },
+        { h2: '服务范围', p: ['我们的核心路线是新山与新加坡：新山、依斯干达公主城、森林城市、士乃、乐高乐园与迪沙鲁，以及新加坡包括樟宜机场在内的任意地址。我们也可应要求安排西马各地的私人行程，包括马六甲、吉隆坡、怡保与槟城。'] },
         { h2: '牌照与安全', p: ['过境载客服务必须在两国持有正确牌照并投保。欢迎随时向我们索取牌照资料，也建议您在预订前向任何业者提出同样的问题。'] },
       ],
       licH: '牌照资料',
@@ -498,6 +499,7 @@ export const pages = {
       h1: '常见问题',
       lead: '旅客在预订新加坡与新山之间私人专车或包车前最常问的问题。',
       extra: [
+        { q: '你们服务哪些地区？', a: '我们的核心路线是新山与新加坡，包括樟宜与士乃机场。我们也可安排西马各地的私人行程，例如马六甲、吉隆坡、怡保与槟城。告诉我们目的地，我们为您报价。' },
         { q: '有提供儿童座椅吗？', a: '儿童座椅可应要求提供，视供应情况而定。预订时请告知孩子的年龄。' },
         { q: '车上可以放几件行李？', a: '视座位配置，阿尔法可舒适容纳最多 4 件大行李。请告知行李件数，我们确认合适的车型。' },
       ],
