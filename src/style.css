@@ -28,11 +28,6 @@ h1,h2,h3,h4{font-family:var(--f-display);line-height:1.1;letter-spacing:-.025em;
 .loader-bar i{display:block;height:100%;width:100%;background:linear-gradient(90deg,var(--sky),var(--gold));transform:scaleX(0);transform-origin:left}
 .no-js .loader{display:none}
 
-/* ── Cursor ───────────────────────────── */
-.cursor{position:fixed;left:0;top:0;width:14px;height:14px;border-radius:50%;background:var(--orange);mix-blend-mode:normal;pointer-events:none;z-index:250;opacity:0;transform:translate(-50%,-50%);transition:width .3s var(--ease),height .3s var(--ease),background .3s}
-.cursor.on{opacity:.9}
-.cursor.big{width:54px;height:54px;background:rgba(255,138,31,.25);border:1px solid var(--orange)}
-@media (hover:none){.cursor{display:none}}
 
 /* ── Nav ──────────────────────────────── */
 .nav{position:fixed;top:0;left:0;right:0;z-index:110;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:14px var(--pad);color:#fff;transition:background .4s,backdrop-filter .4s,transform .5s var(--ease),box-shadow .4s,color .3s}
@@ -83,7 +78,7 @@ body.menu-open .mnav{transform:none;visibility:visible}
 /* ── Hero ─────────────────────────────── */
 .hero{position:relative;min-height:100svh;display:flex;align-items:center;background:linear-gradient(100deg,#06173a 0%,#0a2a5e 100%);color:#fff;padding:120px 0 90px;overflow:hidden}
 .hero-glow{position:absolute;left:-15%;bottom:-40%;width:60vw;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(255,138,31,.28),rgba(255,138,31,0) 62%);pointer-events:none}
-.hero::before{content:'';position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(90deg,#06173a 0,rgba(6,23,58,.9) 28%,rgba(6,23,58,0) 50%)}
+.hero::before{content:'';position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(90deg,#06173a 0,rgba(6,23,58,.88) 24%,rgba(6,23,58,0) 44%)}
 .hero .hero-top{position:relative;z-index:3;display:block;width:100%;max-width:none;margin:0;padding-left:var(--pad);padding-right:var(--pad)}
 .hero-top>div{max-width:min(580px,44vw)}
 .hero-side{margin-top:26px}
@@ -98,8 +93,8 @@ body.zh .hero-h1{font-size:clamp(38px,5vw,76px);line-height:1.15;letter-spacing:
 .hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:26px}
 .chips{display:flex;flex-wrap:wrap;gap:10px}
 .chips li{font-size:13px;font-weight:600;color:#fff;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22)}
-.hero-banner{position:absolute;z-index:1;right:0;top:50%;transform:translateY(-50%);width:66%;aspect-ratio:1.7/1;margin:0;overflow:hidden;-webkit-mask-image:linear-gradient(to right,transparent 0,#000 24%),linear-gradient(to bottom,transparent 0,#000 14%,#000 86%,transparent 100%);-webkit-mask-composite:source-in;mask-image:linear-gradient(to right,transparent 0,#000 24%),linear-gradient(to bottom,transparent 0,#000 14%,#000 86%,transparent 100%);mask-composite:intersect}
-.hero-banner img{display:block;width:100%;height:100%;object-fit:cover;object-position:62% 50%;transform-origin:50% 60%}
+.hero-banner{position:absolute;z-index:1;right:0;top:50%;transform:translateY(-50%);width:66%;aspect-ratio:1.7/1;margin:0;overflow:hidden;-webkit-mask-image:linear-gradient(to right,transparent 0,#000 18%),linear-gradient(to bottom,transparent 0,#000 14%,#000 86%,transparent 100%);-webkit-mask-composite:source-in;mask-image:linear-gradient(to right,transparent 0,#000 18%),linear-gradient(to bottom,transparent 0,#000 14%,#000 86%,transparent 100%);mask-composite:intersect}
+.hero-banner img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 50%;transform-origin:50% 60%}
 @media (max-width:900px){
   .hero{display:block;min-height:0;padding:110px 0 0;background:linear-gradient(180deg,#06173a,#0a2a5e)}
   .hero::before{display:none}

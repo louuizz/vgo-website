@@ -35,8 +35,8 @@ await icon(512, 'public/icon-512.png');
 // Photos → responsive WebP (originals stay in the project root, untouched)
 const photos = { 'hero-mpv': 'MPV Car.png', interior: 'car interior.png', chauffeur: 'Escort.png' };
 // Panoramic hero banner (wider sizes)
-for (const w of [1000, 1600, 2400]) {
-  await sharp('Hero Image.png').resize({ width: w }).webp({ quality: 80 }).toFile(`public/hero-bg-${w}.webp`);
+for (const w of [1000, 1600]) {
+  await sharp('Hero Image.webp').resize({ width: w }).webp({ quality: 82 }).toFile(`public/hero-bg-${w}.webp`);
 }
 for (const [name, file] of Object.entries(photos)) {
   for (const w of [800, 1600]) {
@@ -46,12 +46,12 @@ for (const [name, file] of Object.entries(photos)) {
 
 // OG images 1200x630 per language: MPV photo + navy gradient + title + logo badge
 const W = 1200, H = 630;
-const photo = await sharp('Hero Image.png').resize(W, H, { fit: 'cover', position: 'centre' }).toBuffer();
+const photo = await sharp('Hero Image.webp').resize(W, H, { fit: 'cover', position: 'centre' }).toBuffer();
 const badge = await sharp(trimmed).resize({ height: 150 }).toBuffer();
 const font = 'PingFang SC, Hiragino Sans GB, Helvetica, Arial';
 const og = {
-  'og-image.jpg': ['Premium MPV Charter', 'Johor Bahru ⇄ Singapore', 'Alphard · Vellfire · Airport · Day charter'],
-  'og-image-zh.jpg': ['新山 ⇄ 新加坡', '高端商务车包车与接送', '阿尔法 · 威尔法 · 机场接送 · 一日包车'],
+  'og-image.jpg': ['Premium MPV Charter', 'West Malaysia ⇄ Singapore', 'Alphard · Vellfire · Airport · Day charter'],
+  'og-image-zh.jpg': ['西马 ⇄ 新加坡', '高端商务车包车与接送', '阿尔法 · 威尔法 · 机场接送 · 一日包车'],
 };
 for (const [file, [l1, l2, l3]] of Object.entries(og)) {
   const overlay = Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}">

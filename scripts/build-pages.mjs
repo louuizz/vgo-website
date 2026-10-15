@@ -52,18 +52,18 @@ const IC = {
 };
 const ic = (n) => `<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${IC[n]}</svg>`;
 const SVC_IC = ['route', 'calendar', 'plane', 'pin'];
-const ROUTE_IC = ['car', 'car', 'plane', 'plane', 'pin', 'route'];
+const ROUTE_IC = ['car', 'pin', 'car', 'route', 'plane', 'plane'];
 const STEP_IC = ['chat', 'tag', 'car'];
 const WHY_IC = ['tag', 'car', 'shield', 'chat', 'sparkles', 'clock'];
 const SPEC_IC = ['users', 'briefcase', 'sparkles', 'shield'];
 const FEAT_IC = ['seat', 'snow', 'sparkles', 'battery', 'drop', 'briefcase'];
-const PIC = { mpv: ['hero-mpv', [800, 1600], 1600, 1075, 'hero'], interior: ['interior', [800, 1600], 1600, 900, 'interior'], chauffeur: ['chauffeur', [800, 1600], 1600, 967, 'chauffeur'], banner: ['hero-bg', [1000, 1600], 1600, 640, 'heroBanner'] };
+const PIC = { mpv: ['hero-mpv', [800, 1600], 1600, 1075, 'hero'], interior: ['interior', [800, 1600], 1600, 900, 'interior'], chauffeur: ['chauffeur', [800, 1600], 1600, 967, 'chauffeur'], banner: ['hero-bg', [1000, 1600], 1600, 900, 'heroBanner'] };
 const pic = (lang, key, sizes) => {
   const [n, ws, w, h, alt] = PIC[key];
   return `<img src="/${n}-${ws[ws.length - 1]}.webp" srcset="${ws.map((x) => `/${n}-${x}.webp ${x}w`).join(', ')}" sizes="${sizes}" alt="${esc(home(lang).img[alt])}" width="${w}" height="${h}" loading="lazy">`;
 };
-const IMG_FOR = { 'cross-border-transfer': 'mpv', 'day-charter': 'interior', 'airport-transfer': 'chauffeur', 'long-distance': 'banner', 'singapore-to-johor-bahru': 'mpv', 'johor-bahru-to-singapore': 'banner', 'changi-airport-to-johor-bahru': 'chauffeur', 'senai-airport-to-singapore': 'interior' };
-const INLINE_FOR = { 'cross-border-transfer': 'interior', 'day-charter': 'mpv', 'airport-transfer': 'banner', 'long-distance': 'mpv', 'singapore-to-johor-bahru': 'interior', 'johor-bahru-to-singapore': 'chauffeur', 'changi-airport-to-johor-bahru': 'mpv', 'senai-airport-to-singapore': 'banner' };
+const IMG_FOR = { 'cross-border-transfer': 'mpv', 'day-charter': 'interior', 'airport-transfer': 'chauffeur', 'intercity-transfer': 'banner', 'singapore-to-johor-bahru': 'mpv', 'singapore-to-melaka': 'banner', 'singapore-to-kuala-lumpur': 'chauffeur', 'singapore-to-penang': 'interior', 'changi-airport-to-malaysia': 'mpv', 'klia-airport-transfer': 'banner' };
+const INLINE_FOR = { 'cross-border-transfer': 'interior', 'day-charter': 'mpv', 'airport-transfer': 'banner', 'intercity-transfer': 'mpv', 'singapore-to-johor-bahru': 'interior', 'singapore-to-melaka': 'chauffeur', 'singapore-to-kuala-lumpur': 'banner', 'singapore-to-penang': 'mpv', 'changi-airport-to-malaysia': 'interior', 'klia-airport-transfer': 'chauffeur' };
 const specsHtml = (c) => c.fleet.specs.map((x, i) => `<div><dt>${ic(SPEC_IC[i])}${x.k}</dt><dd>${x.v}</dd></div>`).join('');
 
 // ───────────────────────── schema ─────────────────────────
@@ -84,11 +84,10 @@ function business(lang) {
     priceRange: '$$$',
     slogan: c.hero.eyebrow,
     knowsLanguage: ['en', 'zh', 'ms'],
-    geo: { '@type': 'GeoCoordinates', latitude: site.geo.lat, longitude: site.geo.lng },
     areaServed: [
-      { '@type': 'City', name: c.schema.areas[0] },
-      { '@type': 'AdministrativeArea', name: c.schema.areas[1] },
-      { '@type': 'Country', name: c.schema.areas[2] },
+      { '@type': 'AdministrativeArea', name: c.schema.areas[0] },
+      { '@type': 'Country', name: c.schema.areas[1] },
+      ...c.schema.areas.slice(2).map((n) => ({ '@type': 'City', name: n })),
     ],
     openingHoursSpecification: { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'], opens: '00:00', closes: '23:59' },
     contactPoint: { '@type': 'ContactPoint', contactType: 'reservations', telephone: site.phoneDisplay, availableLanguage: ['English', 'Chinese', 'Malay'] },
@@ -124,7 +123,6 @@ function header(lang, path) {
     <li><a href="${L(lang, '/fleet/')}"${cur(L(lang, '/fleet/'))}>${n.fleet}</a></li>
     <li class="has-sub"><a href="${L(lang, '/routes/')}"${cur(L(lang, '/routes/'))}>${n.routes}</a><div class="sub">${sub('routes')}</div></li>
     <li><a href="${L(lang, '/about/')}"${cur(L(lang, '/about/'))}>${n.about}</a></li>
-    <li><a href="${L(lang, '/faq/')}"${cur(L(lang, '/faq/'))}>${n.faq}</a></li>
     <li><a href="${L(lang, '/contact/')}"${cur(L(lang, '/contact/'))}>${n.contact}</a></li>`;
   const mob = `
     <a href="${L(lang, '/')}">${p.ui.home}</a>
@@ -132,7 +130,6 @@ function header(lang, path) {
     <a href="${L(lang, '/fleet/')}">${n.fleet}</a>
     <a href="${L(lang, '/routes/')}">${n.routes}</a>${slugs.routes.map((s) => `<a class="m-sub" href="${dPath(lang, s)}">${D(lang, s).short}</a>`).join('')}
     <a href="${L(lang, '/about/')}">${n.about}</a>
-    <a href="${L(lang, '/faq/')}">${n.faq}</a>
     <a href="${L(lang, '/contact/')}">${n.contact}</a>`;
   return { c, html: `
 <header class="nav" id="nav">
@@ -156,7 +153,7 @@ function footer(lang) {
     <div><a class="brand" href="${L(lang, '/')}"><img src="/logo-sm.png" alt="${c.aria.logoAlt}" width="44" height="44" loading="lazy"><span>V-GO</span></a><p>${c.footer.blurb}</p></div>
     <div><h4>${p.ui.services}</h4><ul>${slugs.services.map((s) => li(dPath(lang, s), D(lang, s).short)).join('')}</ul></div>
     <div><h4>${p.ui.routes}</h4><ul>${slugs.routes.map((s) => li(dPath(lang, s), D(lang, s).short)).join('')}</ul></div>
-    <div><h4>${p.ui.company}</h4><ul>${li(L(lang, '/fleet/'), p.nav.fleet)}${li(L(lang, '/about/'), p.nav.about)}${li(L(lang, '/faq/'), p.nav.faq)}${li(L(lang, '/contact/'), p.nav.contact)}${li(L(lang, '/privacy/'), P(lang).privacy.h1)}${li(L(lang, '/terms/'), P(lang).terms.h1)}</ul></div>
+    <div><h4>${p.ui.company}</h4><ul>${li(L(lang, '/fleet/'), p.nav.fleet)}${li(L(lang, '/about/'), p.nav.about)}${li(L(lang, '/contact/'), p.nav.contact)}</ul></div>
     <div><h4>${c.aria.contact}</h4><ul><li>${ic('chat')}<a href="${wa()}" rel="noopener">WhatsApp</a></li>${site.email ? `<li>${ic('mail')}<a href="mailto:${site.email}">${site.email}</a></li>` : ''}<li>${ic('phone')}${site.phoneDisplay}</li></ul></div>
   </div>
   <div class="wrap foot-bot"><span>© ${new Date().getFullYear()} ${c.schema.company}. ${c.footer.rights}</span><span>${c.footer.licence}</span></div>
@@ -181,8 +178,6 @@ function layout(lang, { path, title, desc, keywords, ogImage, nodes = [], body, 
 <meta name="description" content="${esc(desc)}">
 ${keywords ? `<meta name="keywords" content="${esc(keywords)}">\n` : ''}<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta name="theme-color" content="#06173a">
-<meta name="geo.region" content="MY-01">
-<meta name="geo.placename" content="Johor Bahru">
 <link rel="canonical" href="${canon}">
 <link rel="alternate" hreflang="en" href="${abs(enPath)}">
 <link rel="alternate" hreflang="zh-Hans" href="${abs(zhPath)}">
@@ -212,7 +207,6 @@ ${preload}<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans
 <body class="${c.lang}${isHome ? ' is-home' : ''}">
 <a class="skip" href="#main">${c.skip}</a>
 ${isHome ? `<div class="loader" aria-hidden="true"><img src="/logo-sm.png" alt="" width="96" height="96"><span class="loader-bar"><i></i></span></div>` : ''}
-<div class="cursor" aria-hidden="true"></div>
 ${h.html.replace('@@ALT@@', altPath)}
 <main id="main">
 ${body}
@@ -265,8 +259,8 @@ const imgTag = (name, alt, sizes, w, h, lazy = true) => `<img src="/${name}-1600
 function homePage(lang) {
   const c = home(lang), p = P(lang);
   const svcSlugs = slugs.services;
-  const routeLinks = [...slugs.routes, 'long-distance', 'long-distance'];
-  const faq5 = c.faq.items.slice(0, 5);
+  const routeLinks = slugs.routes;
+  const faqAll = c.faq.items;
   const body = `
 <section class="hero" id="top">
   <div class="hero-glow" aria-hidden="true"></div>
@@ -289,7 +283,7 @@ function homePage(lang) {
     </div>
   </div>
   <figure class="hero-banner">
-    <img src="/hero-bg-2400.webp" srcset="/hero-bg-1000.webp 1000w, /hero-bg-1600.webp 1600w, /hero-bg-2400.webp 2400w" sizes="100vw" alt="${esc(c.img.heroBanner)}" width="2400" height="960" fetchpriority="high">
+    <img src="/hero-bg-1600.webp" srcset="/hero-bg-1000.webp 1000w, /hero-bg-1600.webp 1600w" sizes="(max-width: 900px) 100vw, 66vw" alt="${esc(c.img.heroBanner)}" width="1600" height="900" fetchpriority="high">
   </figure>
 </section>
 
@@ -354,18 +348,18 @@ function homePage(lang) {
 
 <section class="faq" id="faq" aria-labelledby="faq-h">
   <div class="wrap faq-wrap">
-    <div><p class="kicker">${c.faq.kicker}</p><h2 id="faq-h" class="split">${c.faq.h2}</h2><a class="btn btn-ghost magnetic" href="${L(lang, '/faq/')}"><span>${p.ui.seeFaq}</span></a></div>
-    ${faqList(faq5)}
+    <div><p class="kicker">${c.faq.kicker}</p><h2 id="faq-h" class="split">${c.faq.h2}</h2></div>
+    ${faqList(faqAll)}
   </div>
 </section>
 ${ctaBand(lang)}`;
   const path = L(lang, '/');
   return layout(lang, {
     path, title: c.title, desc: c.description, keywords: c.keywords, isHome: true,
-    preload: `<link rel="preload" as="image" href="/hero-bg-1600.webp" type="image/webp" imagesrcset="/hero-bg-1000.webp 1000w, /hero-bg-1600.webp 1600w, /hero-bg-2400.webp 2400w" imagesizes="100vw">\n`,
+    preload: `<link rel="preload" as="image" href="/hero-bg-1600.webp" type="image/webp" imagesrcset="/hero-bg-1000.webp 1000w, /hero-bg-1600.webp 1600w" imagesizes="(max-width: 900px) 100vw, 66vw">\n`,
     nodes: [
-      { '@type': 'Service', '@id': abs(path + '#service'), name: c.schema.serviceName, serviceType: c.schema.serviceType, description: c.schema.desc, provider: { '@id': abs('/#business') }, areaServed: [c.schema.areas[0], c.schema.areas[2]] },
-      faqNode(lang, path, faq5),
+      { '@type': 'Service', '@id': abs(path + '#service'), name: c.schema.serviceName, serviceType: c.schema.serviceType, description: c.schema.desc, provider: { '@id': abs('/#business') }, areaServed: [c.schema.areas[0], c.schema.areas[1]] },
+      faqNode(lang, path, faqAll),
       crumbNode([{ n: site.name, u: path }]),
     ],
     body,
@@ -396,7 +390,7 @@ ${ctaBand(lang)}`;
   return layout(lang, {
     path, title: d.title, desc: d.desc, body,
     nodes: [
-      { '@type': 'Service', '@id': abs(path + '#service'), name: d.nm, serviceType: d.nm, description: d.desc, url: abs(path), provider: { '@id': abs('/#business') }, areaServed: [c.schema.areas[0], c.schema.areas[2]] },
+      { '@type': 'Service', '@id': abs(path + '#service'), name: d.nm, serviceType: d.nm, description: d.desc, url: abs(path), provider: { '@id': abs('/#business') }, areaServed: [c.schema.areas[0], c.schema.areas[1]] },
       faqNode(lang, path, d.faq),
       crumbNode(crumbs.map((x) => ({ n: x.n, u: x.u }))),
     ],
@@ -428,7 +422,7 @@ ${pageHead(lang, crumbs, { h1: x.h1, lead: x.lead })}
     <div><h3>${c.areas.johor.h3}</h3><ul>${c.areas.johor.list.map((t) => `<li>${t}</li>`).join('')}</ul></div>
     <div><h3>${c.areas.sg.h3}</h3><ul>${c.areas.sg.list.map((t) => `<li>${t}</li>`).join('')}</ul></div>
   </div>
-  <div class="more-band"><div><h3>${x.moreH}</h3><p>${x.moreP}</p></div><a class="btn btn-navy magnetic" href="${dPath(lang, 'long-distance')}"><span>${p.ui.learnMore}</span></a></div>
+  <div class="more-band"><div><h3>${x.moreH}</h3><p>${x.moreP}</p></div><a class="btn btn-navy magnetic" href="${dPath(lang, 'intercity-transfer')}"><span>${p.ui.learnMore}</span></a></div>
 </div></section>
 ${ctaBand(lang)}`;
   return layout(lang, { path, title: x.title, desc: x.desc, body, nodes: [crumbNode(crumbs)] });
@@ -437,7 +431,7 @@ ${ctaBand(lang)}`;
 function fleetPage(lang) {
   const p = P(lang), x = p.fleet, c = home(lang), path = L(lang, '/fleet/');
   const crumbs = [{ n: p.ui.home, u: L(lang, '/') }, { n: p.nav.fleet, u: path }];
-  const faq = [c.faq.items[3], p.faqPage.extra[2]];
+  const faq = [c.faq.items[4], c.faq.items[12]];
   const body = `
 ${pageHead(lang, crumbs, { h1: x.h1, lead: x.lead })}
 <section class="fleet"><div class="wrap grid-fleet">
@@ -472,17 +466,6 @@ ${ctaBand(lang)}`;
   return layout(lang, { path, title: x.title.trim(), desc: x.desc, body, nodes: [crumbNode(crumbs)] });
 }
 
-function faqPage(lang) {
-  const p = P(lang), x = p.faqPage, c = home(lang), path = L(lang, '/faq/');
-  const crumbs = [{ n: p.ui.home, u: L(lang, '/') }, { n: p.nav.faq, u: path }];
-  const items = [...c.faq.items, ...x.extra];
-  const body = `
-${pageHead(lang, crumbs, { h1: x.h1, lead: x.lead, actions: false })}
-<section class="faq"><div class="wrap"><div class="faq-one">${faqList(items)}</div></div></section>
-${ctaBand(lang)}`;
-  return layout(lang, { path, title: x.title, desc: x.desc, body, nodes: [faqNode(lang, path, items), crumbNode(crumbs)] });
-}
-
 function contactPage(lang) {
   const p = P(lang), x = p.contact, c = home(lang), f = c.book.f, path = L(lang, '/contact/');
   const crumbs = [{ n: p.ui.home, u: L(lang, '/') }, { n: p.nav.contact, u: path }];
@@ -510,15 +493,6 @@ ${pageHead(lang, crumbs, { h1: x.h1, lead: x.lead, actions: false })}
   return layout(lang, { path, title: x.title, desc: x.desc, body, nodes: [crumbNode(crumbs)] });
 }
 
-function textPage(lang, key) {
-  const p = P(lang), x = p[key], path = L(lang, `/${key}/`);
-  const crumbs = [{ n: p.ui.home, u: L(lang, '/') }, { n: x.h1, u: path }];
-  const body = `
-${pageHead(lang, crumbs, { h1: x.h1, lead: x.lead, actions: false })}
-<section class="detail"><div class="wrap"><article class="prose narrow">${sectionsHtml(x.sections)}</article></div></section>`;
-  return layout(lang, { path, title: x.title, desc: x.desc, body, nodes: [crumbNode(crumbs)] });
-}
-
 // ───────────────────────── build ─────────────────────────
 for (const lang of LANGS) {
   const pagesOut = [
@@ -527,10 +501,7 @@ for (const lang of LANGS) {
     [L(lang, '/routes/'), routesIndex(lang)],
     [L(lang, '/fleet/'), fleetPage(lang)],
     [L(lang, '/about/'), aboutPage(lang)],
-    [L(lang, '/faq/'), faqPage(lang)],
     [L(lang, '/contact/'), contactPage(lang)],
-    [L(lang, '/privacy/'), textPage(lang, 'privacy')],
-    [L(lang, '/terms/'), textPage(lang, 'terms')],
     ...[...slugs.services, ...slugs.routes].map((s) => [dPath(lang, s), detailPage(lang, s)]),
   ];
   for (const [path, html] of pagesOut) out(path, html);
@@ -538,7 +509,7 @@ for (const lang of LANGS) {
 
 // robots / sitemap / manifest
 const pairs = [...new Map(written.filter((w) => w.lang === 'en').map((w) => [w.enPath, w])).values()];
-const urlEntry = (path, w) => `  <url><loc>${abs(path)}</loc><lastmod>${today}</lastmod><changefreq>${path.length <= 4 ? 'weekly' : 'monthly'}</changefreq><priority>${path === '/' ? '1.0' : /privacy|terms/.test(path) ? '0.3' : '0.8'}</priority>
+const urlEntry = (path, w) => `  <url><loc>${abs(path)}</loc><lastmod>${today}</lastmod><changefreq>${path.length <= 4 ? 'weekly' : 'monthly'}</changefreq><priority>${path === '/' ? '1.0' : '0.8'}</priority>
     <xhtml:link rel="alternate" hreflang="en" href="${abs(w.enPath)}"/><xhtml:link rel="alternate" hreflang="zh-Hans" href="${abs(w.zhPath)}"/><xhtml:link rel="alternate" hreflang="x-default" href="${abs(w.enPath)}"/></url>`;
 const entries = pairs.flatMap((w) => [urlEntry(w.enPath, w), urlEntry(w.zhPath, w)]);
 writeFileSync('public/robots.txt', `User-agent: *\nAllow: /\n\nSitemap: ${abs('/sitemap.xml')}\n`);

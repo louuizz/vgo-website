@@ -129,16 +129,8 @@ const onScroll = () => {
 addEventListener('scroll', onScroll, { passive: true });
 onScroll();
 
-/* ── Cursor + magnetic buttons ─────────── */
+/* ── Magnetic buttons ─────────────────── */
 if (fine && !reduce) {
-  const cur = $('.cursor');
-  const xTo = gsap.quickTo(cur, 'x', { duration: 0.35, ease: 'power3' });
-  const yTo = gsap.quickTo(cur, 'y', { duration: 0.35, ease: 'power3' });
-  addEventListener('pointermove', (e) => { cur.classList.add('on'); xTo(e.clientX); yTo(e.clientY); });
-  $$('a,button,summary,.card').forEach((el) => {
-    el.addEventListener('pointerenter', () => cur.classList.add('big'));
-    el.addEventListener('pointerleave', () => cur.classList.remove('big'));
-  });
   $$('.magnetic').forEach((b) => {
     const mx = gsap.quickTo(b, 'x', { duration: 0.4, ease: 'power3' });
     const my = gsap.quickTo(b, 'y', { duration: 0.4, ease: 'power3' });
