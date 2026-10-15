@@ -8,12 +8,12 @@ npm run dev        # http://localhost:5173
 npm run build      # outputs dist/ — upload to Hostinger public_html
 ```
 
-## Site map (34 pages = 17 × EN + 简体中文)
-`/` Home · `/services/` + 4 service pages · `/fleet/` · `/routes/` + 4 route pages · `/about/` · `/faq/` · `/contact/` · `/privacy/` · `/terms/` — Chinese versions under `/zh/`.
+## Site map (32 pages = 16 × EN + 简体中文)
+`/` Home (includes the full FAQ) · `/services/` + 4 service pages · `/fleet/` · `/routes/` + 6 route pages · `/about/` · `/contact/` — Chinese versions under `/zh/`. Focus: West Malaysia + Singapore.
 
 Where to edit:
 - `content.mjs` — homepage copy, hero, FAQ, image alt text
-- `pages.mjs` — every inner page (services, routes, fleet, about, faq, contact, privacy, terms) in both languages
+- `pages.mjs` — every inner page (services, routes, fleet, about, contact) in both languages
 - `site.config.mjs` — domain, WhatsApp, email, licence numbers
 - `npm run dev/build` regenerates all HTML, `sitemap.xml` and `robots.txt`; `npm run build` also runs `check-lang` (fails if English leaks into a Chinese page or vice versa)
 - Photos: replace `Hero Image.png`, `MPV Car.png`, `car interior.png`, `Escort.png` then run `npm run assets`
@@ -48,5 +48,5 @@ Where to edit:
 ## Design reference
 Awwwards-style: cinematic scroll (Lenis), masked word-reveal headings, pinned horizontal services rail, road line that draws on scroll, parallax sunrise, magnetic buttons, custom cursor. Palette extracted from the logo (navy, gold, sky blue, sunrise orange). Respects `prefers-reduced-motion`; all content is server-rendered HTML so it's fully crawlable.
 
-## Legal pages
-`/privacy/` and `/terms/` are sensible starting drafts, not legal advice — have a lawyer review them (governing law is set to Malaysia; change it in `pages.mjs` if wrong).
+## Deploy
+`SITE_URL` defaults to https://vgo.lsedev.com. `npm run build`, zip the contents of `dist/`, upload and deploy to the Hostinger subdomain. Privacy/Terms pages were removed on request; consider adding them back before running ads.
